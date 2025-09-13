@@ -1,9 +1,9 @@
-﻿// базовый класс для представления результата исследований
+﻿// * Файл "BaseResultProducer.cs": базовый класс для представления результата вычислений калькуляторов по пыли в воздухе. *
 
-using System.Globalization;
+using BaseData;
 
 
-abstract class BaseResultProducer
+abstract class BaseResultProducer : IResults
 {
     // Нижний предел диапазона методики.
 
@@ -15,15 +15,13 @@ abstract class BaseResultProducer
 
     // Коэффициент рассчета погрешности.
 
-    abstract protected double Error_index { get; set; }
+    abstract protected double Error_index { get; }
 
     // Интерпретация результата.
 
-    abstract protected string Result_report { get; set; }
+    abstract protected string Result_report { get; }
 
-    // Результат с погрешностью.
-
-    public string? Result { get; }   // interface ??
+    public string? Result { get; }
 
     // * Вход: массовая концентрация ВВ (пыли). *
 
@@ -33,27 +31,20 @@ abstract class BaseResultProducer
 
         if (Lower_limit_range < mass_concentrate && mass_concentrate < Upper_limit_range)
         {
-            Result = $"{Result_report} {ConvertToRussianLocale(mass_concentrate)} {GetResultError(mass_concentrate)} {MeterUnit.MG_M_CUBE}";
+            Result = $"{Result_report} {IResults.ConvertToRussianLocale(mass_concentrate)} {GetResultError(mass_concentrate)} {MeterUnit.MG_M_CUBE}";
         }
 
         // Концентрация вне диапазонов.
 
         if (mass_concentrate < Lower_limit_range)
         {
-            Result = $"{Result_report} \"менее\", {ConvertToRussianLocale(Lower_limit_range)} {MeterUnit.MG_M_CUBE}";
+            Result = $"{Result_report} менее {IResults.ConvertToRussianLocale(Lower_limit_range)} {MeterUnit.MG_M_CUBE}";
         }
 
         if (mass_concentrate > Upper_limit_range)
         {
-            Result = $"{Result_report} \"более\", {ConvertToRussianLocale(Upper_limit_range)} {MeterUnit.MG_M_CUBE}";
+            Result = $"{Result_report} более {IResults.ConvertToRussianLocale(Upper_limit_range)} {MeterUnit.MG_M_CUBE}";
         }
-    }
-
-    // * Замена точки на запятую в результатах. *
-
-    static string ConvertToRussianLocale(double value)    // interface ??
-    {
-        return value.ToString(CultureInfo.CurrentCulture);   // test ??
     }
 
     // * Рассчет погрешности измерения. *

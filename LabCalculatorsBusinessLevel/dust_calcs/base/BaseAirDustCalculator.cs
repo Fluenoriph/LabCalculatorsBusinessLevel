@@ -1,11 +1,14 @@
-﻿// * Файл "BaseAirDust.cs": базовый класс, для калькуляторов рассчета взвешенных веществ в воздухе. *
+﻿// * Файл "BaseAirDustCalculator.cs": базовый класс, для калькуляторов рассчета взвешенных веществ в воздухе. *
 
-abstract class BaseAirDust
+using BaseData;
+
+
+abstract class BaseAirDustCalculator
 {
     /* Значение нормальной температуры среды, в которой проводился отбор проб.
        Атмосферный воздух или воздух закрытых помещений. */
 
-    abstract protected int Reference_current_area_temperature_index { get; set; }
+    abstract protected int Current_area_reference_temperature_index { get; }
 
     // Параметры калькулятора.
 
@@ -15,7 +18,7 @@ abstract class BaseAirDust
 
     // * Вход: список значений параметров. *
 
-    public BaseAirDust(List<double> values)
+    public BaseAirDustCalculator(List<double> values)
     {
         volume = values[0];
         temperature = values[1];
@@ -58,8 +61,8 @@ abstract class BaseAirDust
 
     double GetNormalVolume()
     {
-        var normal_volume = (volume * Reference_current_area_temperature_index * pressure) /
-                            ( (FormulaConstants.REFERENCE_ATMOS_TEMPERATURE_INDEX + temperature) * FormulaConstants.REFERENCE_PRESSURE_INDEX);
+        var normal_volume = (volume * Current_area_reference_temperature_index * pressure) /
+                            ( (FormulaConstants.ATMOS_REFERENCE_TEMPERATURE_INDEX + temperature) * FormulaConstants.REFERENCE_PRESSURE_INDEX);
 
         return Math.Round(normal_volume);
     }
