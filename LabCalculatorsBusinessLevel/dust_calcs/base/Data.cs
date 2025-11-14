@@ -34,4 +34,6 @@ namespace BaseData
 
         public const string MERCURY_MM = "мм.рт.ст.";
     }
+
+    struct Extreme
 }
