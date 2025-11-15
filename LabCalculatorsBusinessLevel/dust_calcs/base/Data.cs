@@ -1,5 +1,6 @@
 ﻿// * Файл "Data.cs". Пространство имен "BaseData": общие данные для калькуляторов взвешенных веществ (пыли). *
 
+
 namespace BaseData
 {
     // * Константы, используемые в формулах. *
@@ -35,5 +36,21 @@ namespace BaseData
         public const string MERCURY_MM = "мм.рт.ст.";
     }
 
-    struct Extreme
+
+    // Допустимые границы диапазонов входных параметров калькулятора.
+
+    struct ExtremeValuesOfRange
+    {
+        public const int VOLUME_RANGE_LOWER_VALUE = 0;
+        public const int VOLUME_RANGE_UPPER_VALUE = 10000;
+
+        public const int TEMPERATURE_RANGE_LOWER_VALUE = -100;
+        public const int TEMPERATURE_RANGE_UPPER_VALUE = 100;
+
+        public const int PRESSURE_RANGE_LOWER_VALUE = 600;
+        public const int PRESSURE_RANGE_UPPER_VALUE = 900;
+
+        public const int FILTER_WEIGHT_RANGE_LOWER_VALUE = 0;
+        public const int FILTER_WEIGHT_RANGE_UPPER_VALUE = 50;
+    }
 }

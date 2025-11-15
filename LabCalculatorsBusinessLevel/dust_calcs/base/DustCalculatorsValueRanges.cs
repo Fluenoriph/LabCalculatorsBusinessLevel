@@ -1,12 +1,30 @@
 ﻿// * Границы диапазонов значений параметров. *
 
-class DustCalculatorsValueRanges : BaseValueRange
+using BaseData;
+
+
+class DustCalculatorsValueRanges : IBaseValueRange<List<IEnumerable<int>>>
 {
-    public static (double, double) volume_range_values = (0.0, 10000.0);
+    public List<List<double>> CorrectRanges { get; } = [];
 
-    public static (double, double) temperature_range_values = (-100.0, 100.0);
+    public List<IEnumerable<int>> Ranges { get; } = [Enumerable.Range(ExtremeValuesOfRange.VOLUME_RANGE_LOWER_VALUE, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_VALUE),
+                                                     Enumerable.Range(ExtremeValuesOfRange.TEMPERATURE_RANGE_LOWER_VALUE, ExtremeValuesOfRange.TEMPERATURE_RANGE_UPPER_VALUE),
+                                                     Enumerable.Range(ExtremeValuesOfRange.PRESSURE_RANGE_LOWER_VALUE, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_VALUE),
+                                                     Enumerable.Range(ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_LOWER_VALUE, ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_UPPER_VALUE),
+                                                     Enumerable.Range(ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_LOWER_VALUE, ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_UPPER_VALUE)];
 
-    public static (double, double) pressure_range_values = (600.0, 900.0);
+    public DustCalculatorsValueRanges()
+    {
+        for (int range_index = 0; range_index < Ranges.Count; range_index++)
+        {
+            List<double> correct_range = [];
 
-    public static (double, double) filter_weight_range_values = (0.0, 50.0);
+            foreach (var value in Ranges[range_index])
+            {
+                correct_range.Add(Convert.ToDouble(value));
+            }
+
+            CorrectRanges.Add(correct_range);
+        }
+    }
 }
