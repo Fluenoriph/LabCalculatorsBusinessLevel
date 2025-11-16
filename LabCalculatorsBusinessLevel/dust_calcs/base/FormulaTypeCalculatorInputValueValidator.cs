@@ -1,29 +1,37 @@
-﻿//
+﻿// Класс, для валидации параметров калькуляторов, где результат рассчитывается по формуле. 
 
-abstract class FormulaTypeCalculatorInputValueValidator : BaseInputValueValidator<List<string>, List<double>,List<bool>, List<List<double>>>
+class FormulaTypeCalculatorInputValueValidator(List<string> parameter_names, List<double> parameter_values, List<(int, int)> ranges) 
+    : BaseInputValueValidator<List<string>, List<double>, List<bool>, List<(int, int)>> (parameter_names, parameter_values, ranges)
 {
-    public FormulaTypeCalculatorInputValueValidator(List<string> parameter_names, List<double> parameter_values, List<List<double>> ranges) : base(parameter_names, parameter_values, ranges)
-    {
-
-    }
+    protected override List<bool> Validate_logic_tracer { get; } = [];
 
     protected override void CheckValues()
     {
         for (int parameter_index = 0; parameter_index < parameter_values.Count; parameter_index++ )
         {
-            if (Value_range[parameter_index].Contains(parameter_values[parameter_index]))
-            {
-                ////
-            }
-            else
-            {
-
-            }
-
+            Validate_logic_tracer.Add(ValidateValueToRange(parameter_values[parameter_index], Value_range[parameter_index].Item1, Value_range[parameter_index].Item2));   
         }
-        
+    }
 
+    protected override void GetParameterResult()
+    {
+        for (int parameter_index = 0; parameter_index < parameter_values.Count; parameter_index++)
+        {
+            Console.WriteLine($"{parameter_names[parameter_index]}: {parameter_values[parameter_index]} -- " +
+                $"{(Validate_logic_tracer[parameter_index] ? "Value Is Valid !" : "Value Is Bad !")}");
+        }
+    }
 
+    protected override void GetValidationMainResult()
+    {
+        foreach (var logic_result in Validate_logic_tracer)
+        {
+            if (logic_result == false) ALL_VALUES_VALID++;
+        }
 
+        if (ALL_VALUES_VALID == 0)
+        {
+            Validation_result = true;
+        }
     }
 }

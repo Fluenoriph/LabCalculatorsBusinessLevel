@@ -41,16 +41,16 @@ namespace BaseData
 
     struct ExtremeValuesOfRange
     {
-        public const int VOLUME_RANGE_LOWER_VALUE = 0;
-        public const int VOLUME_RANGE_UPPER_VALUE = 10000;
+        public const int VOLUME_RANGE_LOWER_LIMIT = 0;
+        public const int VOLUME_RANGE_UPPER_LIMIT = 10000;
 
-        public const int TEMPERATURE_RANGE_LOWER_VALUE = -100;
-        public const int TEMPERATURE_RANGE_UPPER_VALUE = 100;
+        public const int TEMPERATURE_RANGE_LOWER_LIMIT = -100;
+        public const int TEMPERATURE_RANGE_UPPER_LIMIT = 100;
 
-        public const int PRESSURE_RANGE_LOWER_VALUE = 600;
-        public const int PRESSURE_RANGE_UPPER_VALUE = 900;
+        public const int PRESSURE_RANGE_LOWER_LIMIT = 600;
+        public const int PRESSURE_RANGE_UPPER_LIMIT = 900;
 
-        public const int FILTER_WEIGHT_RANGE_LOWER_VALUE = 0;
-        public const int FILTER_WEIGHT_RANGE_UPPER_VALUE = 50;
+        public const int FILTER_WEIGHT_RANGE_LOWER_LIMIT = 0;
+        public const int FILTER_WEIGHT_RANGE_UPPER_LIMIT = 50;
     }
 }
