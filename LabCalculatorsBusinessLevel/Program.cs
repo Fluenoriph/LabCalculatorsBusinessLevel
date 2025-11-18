@@ -22,18 +22,16 @@ if (dust_values_validator.Validation_result)
 
     using (ApplicationContext CalcsDatabase = new())
     {
-        //DateOfCalculationData date_and_time = new() { Value = "2025-05-25 15:55:02" };
-        //RegisterData main_data = new() { CalcType = 1 };
-        AirDustCalcParametersData air_dust_calc_parameters = new() { Volume = 2000, Temperature = 25.0, Pressure = 755.6, MassBefore = 0.0006, MassAfter = 0.12, RegisterId = 1 };
-        //AirDustCalcResultsData air_dust_calc_results = new() { Concentrate = 0.58, Fault = 0.12 };
+        bool db_ready = CalcsDatabase.Database.CanConnect();
 
-        //CalcsDatabase.DateOfCalculation.Add(date_and_time);
-        //CalcsDatabase.Register.Add(main_data);
-        CalcsDatabase.AirDustCalcParameters.Add(air_dust_calc_parameters);
-        //CalcsDatabase.AirDustCalcResults.Add(air_dust_calc_results);
-        CalcsDatabase.SaveChanges();
+        if (db_ready) Console.WriteLine("Base is OK !");
+        else Console.WriteLine("Base is BAD !");
+                            
+        
+        
+        //CalcsDatabase.SaveChanges();
 
-        Console.WriteLine("\nДанные добавлены в базу данных !");
+        //Console.WriteLine("\nДанные добавлены в базу данных !");
     };
     
 
