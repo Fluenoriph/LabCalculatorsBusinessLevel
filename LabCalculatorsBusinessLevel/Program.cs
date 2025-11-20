@@ -1,5 +1,9 @@
 ﻿// Параметры: V, t, P, m_0, m.
 
+using LabCalculatorsBusinessLevel.CalcDBContext;
+using LabCalculatorsBusinessLevel.Models;
+
+
 Console.WriteLine("\n> Калькулятор атмосферный воздух *\n");
 
 // Установка параметров.
@@ -20,24 +24,37 @@ if (dust_values_validator.Validation_result)
 {
     Console.WriteLine("\nCalculator is ready !");
 
-    using (ApplicationContext CalcsDatabase = new())
+    using (LabCalcsContext CalcsDatabase = new())
     {
         bool db_ready = CalcsDatabase.Database.CanConnect();
 
         if (db_ready) Console.WriteLine("Base is OK !");
         else Console.WriteLine("Base is BAD !");
-                            
-        
-        
-        //CalcsDatabase.SaveChanges();
 
+        /*Airparameters air_parameters = new()
+        {
+            Id = 2,
+            Volume = (float)dust_calc_parameters.Values[0],
+            Temperature = (float)dust_calc_parameters.Values[1],
+            Pressure = (float)dust_calc_parameters.Values[2],
+            Massbefore = (float)dust_calc_parameters.Values[3],
+            Massafter = (float)dust_calc_parameters.Values[4]
+        };
+        CalcsDatabase.Airparameters.Add(air_parameters);*/
+
+        //Dateofcalculation dateofcalculation = new() { Id = 1, Value = DateTime.Now };
+        //CalcsDatabase.Dateofcalculations.Add(dateofcalculation);
+
+        //Register register = new() { Id, Calctype = 1, Calcdate = 1 };
+        //CalcsDatabase.Registers.Add(register);
+
+        //Airresults airresult = new() { Concentrate = 0.45F, Fault = 0.08F };
+        //CalcsDatabase.Airresults.Add(airresult);
+
+        //CalcsDatabase.SaveChanges();
         //Console.WriteLine("\nДанные добавлены в базу данных !");
     };
     
-
-
-
-
 }
 else
 {
