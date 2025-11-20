@@ -31,16 +31,15 @@ if (dust_values_validator.Validation_result)
         if (db_ready) Console.WriteLine("Base is OK !");
         else Console.WriteLine("Base is BAD !");
 
-        /*Airparameters air_parameters = new()
+        AirParameters air_parameters = new()
         {
-            Id = 2,
             Volume = (float)dust_calc_parameters.Values[0],
             Temperature = (float)dust_calc_parameters.Values[1],
             Pressure = (float)dust_calc_parameters.Values[2],
-            Massbefore = (float)dust_calc_parameters.Values[3],
-            Massafter = (float)dust_calc_parameters.Values[4]
+            FilterWeightBefore = (float)dust_calc_parameters.Values[3],
+            FilterWeightAfter = (float)dust_calc_parameters.Values[4]
         };
-        CalcsDatabase.Airparameters.Add(air_parameters);*/
+        CalcsDatabase.Airparameters.Add(air_parameters);
 
         //Dateofcalculation dateofcalculation = new() { Id = 1, Value = DateTime.Now };
         //CalcsDatabase.Dateofcalculations.Add(dateofcalculation);
@@ -51,8 +50,8 @@ if (dust_values_validator.Validation_result)
         //Airresults airresult = new() { Concentrate = 0.45F, Fault = 0.08F };
         //CalcsDatabase.Airresults.Add(airresult);
 
-        //CalcsDatabase.SaveChanges();
-        //Console.WriteLine("\nДанные добавлены в базу данных !");
+        CalcsDatabase.SaveChanges();
+        Console.WriteLine("\nДанные добавлены в базу данных !");
     };
     
 }

@@ -1,7 +1,7 @@
 ﻿namespace LabCalculatorsBusinessLevel.Models;
 
 
-public partial class Airparameters
+public partial class AirParameters
 {
     public int Id { get; set; }
 
@@ -11,9 +11,9 @@ public partial class Airparameters
 
     public float Pressure { get; set; }
 
-    public float Massbefore { get; set; }
+    public float FilterWeightBefore { get; set; }
 
-    public float Massafter { get; set; }
+    public float FilterWeightAfter { get; set; }
 
-    public virtual ICollection<Register> Registers { get; set; } = [];
+    public ICollection<Register> Registers { get; set; } = [];
 }

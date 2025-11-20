@@ -1,11 +1,11 @@
 ﻿namespace LabCalculatorsBusinessLevel.Models;
 
 
-public partial class Dateofcalculation
+public partial class DateOfCalculation
 {
     public int Id { get; set; }
 
     public DateTime Value { get; set; }
 
-    public virtual ICollection<Register> Registers { get; set; } = new List<Register>();
+    public ICollection<Register> Registers { get; set; } = [];
 }

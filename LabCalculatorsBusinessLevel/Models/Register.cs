@@ -5,19 +5,19 @@ public partial class Register
 {
     public int Id { get; set; }
 
-    public int Calctypeid { get; set; }
+    public int CalcTypeId { get; set; }
 
-    public int Calcdateid { get; set; }
+    public int CalcDateId { get; set; }
 
-    public int Parametersid { get; set; }
+    public int ParametersId { get; set; }
 
-    public int Resultsid { get; set; }
+    public int ResultsId { get; set; }
 
-    public virtual Dateofcalculation Calcdate { get; set; } = null!;
+    public DateOfCalculation CalcDate { get; set; } = null!;
 
-    public virtual Typeofcalculator Calctype { get; set; } = null!;
+    public TypeOfCalculator CalcType { get; set; } = null!;
 
-    public virtual Airparameters Parameters { get; set; } = null!;
+    public AirParameters Parameters { get; set; } = null!;
 
-    public virtual Airresults Results { get; set; } = null!;
+    public AirResults Results { get; set; } = null!;
 }

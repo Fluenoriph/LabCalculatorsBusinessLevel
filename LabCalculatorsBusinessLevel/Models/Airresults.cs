@@ -1,7 +1,7 @@
 ﻿namespace LabCalculatorsBusinessLevel.Models;
 
 
-public partial class Airresults
+public partial class AirResults
 {
     public int Id { get; set; }
 
@@ -9,5 +9,5 @@ public partial class Airresults
 
     public float Fault { get; set; }
 
-    public virtual ICollection<Register> Registers { get; set; } = [];
+    public ICollection<Register> Registers { get; set; } = [];
 }
