@@ -1,9 +1,9 @@
 ﻿// * Границы диапазонов значений параметров. *
 
-using BaseData;
+using BaseDustCalcsData;
 
 
-class DustCalculatorsValueRanges : IBaseValueRange<List<(int, int)>>
+class DustCalcsValueRanges : IBaseValueRange<List<(int, int)>>
 {
     public List<(int, int)> Ranges { get; } = [(ExtremeValuesOfRange.VOLUME_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_LIMIT),
                                                (ExtremeValuesOfRange.TEMPERATURE_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.TEMPERATURE_RANGE_UPPER_LIMIT),

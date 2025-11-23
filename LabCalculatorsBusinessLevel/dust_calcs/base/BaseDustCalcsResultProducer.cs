@@ -1,9 +1,9 @@
-﻿// * Файл "BaseResultProducer.cs": базовый класс для представления результата вычислений калькуляторов по пыли в воздухе. *
+﻿// * Файл "BaseDustCalcsResultProducer.cs": базовый класс для представления результата вычислений калькуляторов по пыли в воздухе. *
 
-using BaseData;
+using BaseDustCalcsData;
 
 
-abstract class BaseResultProducer : IResults
+abstract class BaseDustCalcsResultProducer : IResults
 {
     // Нижний предел диапазона методики.
 
@@ -25,7 +25,7 @@ abstract class BaseResultProducer : IResults
 
     // * Вход: массовая концентрация ВВ (пыли). *
 
-    public BaseResultProducer(double mass_concentrate)
+    public BaseDustCalcsResultProducer(double mass_concentrate)
     {
         // Концентрация в диапазоне измерения методики.
 

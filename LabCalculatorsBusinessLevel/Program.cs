@@ -8,11 +8,11 @@ Console.WriteLine("\n> Калькулятор атмосферный возду�
 
 // Установка параметров.
 
-DustCalculatorsParameters dust_calc_parameters = new(2000, -25.1, 755, 0.00025, 0.1);
+DustCalcsParameters dust_calc_parameters = new(2000, -25.1, 755, 0.00025, 0.1);
 
 // Валидация по диапазонам.
 
-DustCalculatorsValueRanges dust_ranges = new();
+DustCalcsValueRanges dust_ranges = new();
 
 FormulaTypeCalculatorInputValueValidator dust_values_validator = new(AtmosphericCalculatorData.CalcParameters.NAMES, 
                                                                      dust_calc_parameters.Values,

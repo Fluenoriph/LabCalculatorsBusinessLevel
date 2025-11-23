@@ -1,6 +1,6 @@
 ﻿// Параметры калькулятора.
 
-interface IInputParameters
+interface IInputParameters<T>
 {
-    List<double> Values { get; }
+    T Values { get; }
 }

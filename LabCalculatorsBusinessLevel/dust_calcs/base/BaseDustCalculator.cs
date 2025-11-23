@@ -1,9 +1,9 @@
-﻿// * Файл "BaseAirDustCalculator.cs": базовый класс, для калькуляторов рассчета взвешенных веществ в воздухе. *
+﻿// * Файл "BaseDustCalculator.cs": базовый класс, для калькуляторов рассчета взвешенных веществ в воздухе. *
 
-using BaseData;
+using BaseDustCalcsData;
 
 
-abstract class BaseAirDustCalculator
+abstract class BaseDustCalculator : BaseCalculator
 {
     /* Значение нормальной температуры среды, в которой проводился отбор проб.
        Атмосферный воздух или воздух закрытых помещений. */
@@ -18,7 +18,7 @@ abstract class BaseAirDustCalculator
 
     // * Вход: список значений параметров. *
 
-    public BaseAirDustCalculator(List<double> values)
+    public BaseDustCalculator(List<double> values)
     {
         volume = values[0];
         temperature = values[1];
