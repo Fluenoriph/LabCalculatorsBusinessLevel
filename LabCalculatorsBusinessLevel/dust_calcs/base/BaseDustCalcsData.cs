@@ -5,7 +5,7 @@ namespace BaseDustCalcsData;
 
 // * Константы, используемые в формулах. *
 
-struct FormulaConstants
+struct FormulaConstants  // base interface
 {
     // Значение нормальной температуры атмосферного воздуха по Кельвину (0 ℃).
 
@@ -23,7 +23,7 @@ struct FormulaConstants
 
 // * Единицы измерения. *
 
-struct MeterUnit
+struct MeterUnit  // base interface
 {
     public const string MG_M_CUBE = "мг/м³";
 
@@ -39,7 +39,7 @@ struct MeterUnit
 
 // Допустимые границы диапазонов входных параметров калькулятора.
 
-struct ExtremeValuesOfRange
+struct ExtremeValuesOfRange    // base interface
 {
     public const int VOLUME_RANGE_LOWER_LIMIT = 0;
     public const int VOLUME_RANGE_UPPER_LIMIT = 10000;

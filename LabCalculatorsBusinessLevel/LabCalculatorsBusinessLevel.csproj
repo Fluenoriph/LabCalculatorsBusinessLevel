@@ -57,8 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="bin\Debug\net10.0\" />
-    <Folder Include="vent_eff_calc\" />
+    <Folder Include="data_access_layer\" />
     <Folder Include="noise_calc\" />
   </ItemGroup>
 
