@@ -3,20 +3,24 @@
 using BaseDustCalcsData;
 
 
-abstract class BaseDustCalculator : BaseCalculator
+abstract class BaseDustCalculator : BaseCalculator<List<double>>
 {
     /* Значение нормальной температуры среды, в которой проводился отбор проб.
        Атмосферный воздух или воздух закрытых помещений. */
 
     abstract protected int Current_area_reference_temperature_index { get; }
 
+    // Коэффициент погрешности.
+
+    abstract protected double Error_index { get; }
+
     // Параметры калькулятора.
 
     readonly double volume, temperature, pressure, filter_weight_1, filter_weight_2;
 
-    public double Mass_concentration { get; }
+    public override List<double> Result_data { get; } = [];
 
-    // * Вход: список значений параметров. *
+    // Вход: список значений параметров.
 
     public BaseDustCalculator(List<double> values)
     {
@@ -26,7 +30,10 @@ abstract class BaseDustCalculator : BaseCalculator
         filter_weight_1 = values[3];
         filter_weight_2 = values[4];
 
-        Mass_concentration = CalcMassConcentration();
+        var mass_concentration = CalcMassConcentration();
+
+        Result_data.Add(mass_concentration);
+        Result_data.Add(DustCalcsResultError.GetResultError(mass_concentration, Error_index));
     }
 
     /* * Вычисление массовой концентрации взвешенных веществ (пыли). *
@@ -43,7 +50,7 @@ abstract class BaseDustCalculator : BaseCalculator
         var concentration = ( (filter_weight_2 * FormulaConstants.C_SYSTEM_STEP_RATE) - (filter_weight_1 * FormulaConstants.C_SYSTEM_STEP_RATE) ) * FormulaConstants.C_SYSTEM_STEP_RATE /
                                GetNormalVolume();
 
-        return Math.Round(concentration, 2);
+        return Math.Round(concentration, FractionalDigits.DUST_CALCS);
     }
 
     /* * Приведение объема отобранной пробы к нормальным условиям. *

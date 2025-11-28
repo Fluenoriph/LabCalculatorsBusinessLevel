@@ -3,17 +3,17 @@
 namespace AtmosphericCalculatorData;
 
 
-readonly struct CalcParameters  // base interface
+struct ParametersTitles
 {
     // Параметры функции-рассчета массовой концентрации взвешенных веществ, исходя из РД 52.04.893-2020.
 
     public static readonly List<string> NAMES = ["Объем взятого на анализ атмосферного воздуха", "Температура воздуха, прошедшего через ротаметр",
-                                                 "Атмосферное давление в месте отбора", "Среднее значение массы фильтра до отбора пробы", 
-                                                 "Среднее значение массы фильтра после отбора пробы"];
+                                                "Атмосферное давление в месте отбора", "Среднее значение массы фильтра до отбора пробы", 
+                                                "Среднее значение массы фильтра после отбора пробы"];
 }
 
 
-struct NumericConstants  // base interface
+struct NumericConstants
 {
     // Пределы диапазона измерения методики: от 0,15 до 10 мг/м³ (миллиграмм на кубический метр).
 
@@ -27,7 +27,7 @@ struct NumericConstants  // base interface
 }
 
 
-struct Results  // base interface
+struct ResultTitles
 {
-    public const string UNIT_REPORT = "Массовая концентрация взвешенных веществ:";
+    public const string REPORT_NAME = "Массовая концентрация взвешенных веществ:";
 }

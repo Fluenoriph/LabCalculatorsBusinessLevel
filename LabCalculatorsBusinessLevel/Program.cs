@@ -1,12 +1,10 @@
-﻿// Параметры: V, t, P, m_0, m.
-
-using LabCalculatorsBusinessLevel.CalcDBContext;
+﻿using LabCalculatorsBusinessLevel.CalcDBContext;
 using LabCalculatorsBusinessLevel.Models;
 
 
 Console.WriteLine("\n> Калькулятор атмосферный воздух *\n");
 
-// Установка параметров.
+// Установка параметров (V, t, P, m_0, m).
 
 DustCalcsParameters dust_calc_parameters = new(2000, -25.1, 755, 0.00025, 0.1);
 
@@ -14,7 +12,7 @@ DustCalcsParameters dust_calc_parameters = new(2000, -25.1, 755, 0.00025, 0.1);
 
 DustCalcsValueRanges dust_ranges = new();
 
-FormulaTypeCalculatorInputValueValidator dust_values_validator = new(AtmosphericCalculatorData.CalcParameters.NAMES, 
+FormulaTypeCalculatorInputValueValidator dust_values_validator = new(AtmosphericCalculatorData.ParametersTitles.NAMES, 
                                                                      dust_calc_parameters.Values,
                                                                      dust_ranges.Ranges);
 
@@ -41,14 +39,7 @@ if (dust_values_validator.Validation_result)
         };
         CalcsDatabase.Airparameters.Add(air_parameters);
 
-        //Dateofcalculation dateofcalculation = new() { Id = 1, Value = DateTime.Now };
-        //CalcsDatabase.Dateofcalculations.Add(dateofcalculation);
-
-        //Register register = new() { Id, Calctype = 1, Calcdate = 1 };
-        //CalcsDatabase.Registers.Add(register);
-
-        //Airresults airresult = new() { Concentrate = 0.45F, Fault = 0.08F };
-        //CalcsDatabase.Airresults.Add(airresult);
+        
 
         CalcsDatabase.SaveChanges();
         Console.WriteLine("\nДанные добавлены в базу данных !");
@@ -94,7 +85,7 @@ else
 
 var self_obj_air_result = new AtmosphericResult(self_obj_air_calc.Mass_concentration);
 
-Console.WriteLine(self_obj_air_result.Result);
+Console.WriteLine(self_obj_air_result.Result_viewer);
 
 Console.WriteLine($"\n{new string('=', 60)}");
 
@@ -104,4 +95,4 @@ var self_obj_work_zone_calc = new WorkZoneCalculator([3000, 20, 755, 0.00025, 0.
 
 var self_obj_work_zone_result = new WorkZoneResult(self_obj_work_zone_calc.Mass_concentration);
 
-Console.WriteLine(self_obj_work_zone_result.Result);*/
+Console.WriteLine(self_obj_work_zone_result.Result_viewer);*/

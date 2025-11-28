@@ -3,7 +3,7 @@
 namespace WorkZoneCalculatorData;
 
 
-readonly struct CalcParameters
+readonly struct ParametersTitles
 {
     // Параметры функции-рассчета массовой концентрации пыли, исходя из МУК 4.1.2468-09.
 
@@ -31,7 +31,7 @@ struct NumericConstants
 }
 
 
-struct Results
+struct ResultTitles
 {
-    public const string UNIT_REPORT = "Массовая концентрация пыли:";
+    public const string REPORT_NAME = "Массовая концентрация пыли:";
 }

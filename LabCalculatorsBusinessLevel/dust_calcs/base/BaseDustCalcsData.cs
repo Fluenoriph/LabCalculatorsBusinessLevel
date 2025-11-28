@@ -1,11 +1,11 @@
-﻿// * Файл "Data.cs". Пространство имен "BaseDustCalcsData": общие данные для калькуляторов взвешенных веществ (пыли). *
+﻿// * Файл "BaseDustCalcsData.cs". Пространство имен "BaseDustCalcsData": общие данные для калькуляторов взвешенных веществ (пыли). *
 
 namespace BaseDustCalcsData;
 
 
-// * Константы, используемые в формулах. *
+// Константы, используемые в формулах.
 
-struct FormulaConstants  // base interface
+struct FormulaConstants
 {
     // Значение нормальной температуры атмосферного воздуха по Кельвину (0 ℃).
 
@@ -21,9 +21,9 @@ struct FormulaConstants  // base interface
 }
 
 
-// * Единицы измерения. *
+// Единицы измерения.
 
-struct MeterUnit  // base interface
+struct MeterUnit
 {
     public const string MG_M_CUBE = "мг/м³";
 
@@ -39,7 +39,7 @@ struct MeterUnit  // base interface
 
 // Допустимые границы диапазонов входных параметров калькулятора.
 
-struct ExtremeValuesOfRange    // base interface
+struct ExtremeValuesOfRange 
 {
     public const int VOLUME_RANGE_LOWER_LIMIT = 0;
     public const int VOLUME_RANGE_UPPER_LIMIT = 10000;

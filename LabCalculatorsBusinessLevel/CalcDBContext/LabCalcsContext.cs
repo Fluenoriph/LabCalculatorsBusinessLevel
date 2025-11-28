@@ -25,7 +25,7 @@ public partial class LabCalcsContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         var config = new ConfigurationBuilder()
-                        .AddJsonFile("appsettings.json")
+                        .AddJsonFile("appsettings.json")   // change path !!!
                         .SetBasePath("C:\\Users\\Mahabhara\\source\\repos\\LabCalculatorsBusinessLevel\\LabCalculatorsBusinessLevel")
                         .Build();
 
