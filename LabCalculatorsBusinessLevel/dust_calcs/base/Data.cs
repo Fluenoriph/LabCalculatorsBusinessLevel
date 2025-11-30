@@ -1,6 +1,6 @@
-﻿// * Файл "BaseDustCalcsData.cs". Пространство имен "BaseDustCalcsData": общие данные для калькуляторов взвешенных веществ (пыли). *
+﻿// * Файл "DustCalcsData.cs". Пространство имен "DustCalcsData": общие данные для калькуляторов взвешенных веществ (пыли). *
 
-namespace BaseDustCalcsData;
+namespace DustCalcsData;
 
 
 // Константы, используемые в формулах.
@@ -25,7 +25,7 @@ struct FormulaConstants
 
 struct MeterUnit
 {
-    public const string MG_M_CUBE = "мг/м³";
+    public const string MG_ON_CUBE_METER = "мг/м³";
 
     public const string LITER = "л";
 

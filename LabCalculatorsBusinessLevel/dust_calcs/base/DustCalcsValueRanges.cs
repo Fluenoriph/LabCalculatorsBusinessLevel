@@ -1,13 +1,16 @@
 ﻿// * Границы диапазонов значений параметров. *
 
-using BaseDustCalcsData;
+using DustCalcsData;
 
 
-class DustCalcsValueRanges : IBaseValueRange<List<(int, int)>>
+sealed class DustCalcsValueRanges : FormulaTypeCalculatorValueRanges
 {
-    public List<(int, int)> Ranges { get; } = [(ExtremeValuesOfRange.VOLUME_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_LIMIT),
-                                               (ExtremeValuesOfRange.TEMPERATURE_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.TEMPERATURE_RANGE_UPPER_LIMIT),
-                                               (ExtremeValuesOfRange.PRESSURE_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_LIMIT),
-                                               (ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_UPPER_LIMIT),
-                                               (ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_UPPER_LIMIT)];
+    public DustCalcsValueRanges()
+    {
+        Ranges.Add((ExtremeValuesOfRange.VOLUME_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_LIMIT));
+        Ranges.Add((ExtremeValuesOfRange.TEMPERATURE_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.TEMPERATURE_RANGE_UPPER_LIMIT));
+        Ranges.Add((ExtremeValuesOfRange.PRESSURE_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.VOLUME_RANGE_UPPER_LIMIT));
+        Ranges.Add((ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_UPPER_LIMIT));
+        Ranges.Add((ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_LOWER_LIMIT, ExtremeValuesOfRange.FILTER_WEIGHT_RANGE_UPPER_LIMIT));
+    }
 }

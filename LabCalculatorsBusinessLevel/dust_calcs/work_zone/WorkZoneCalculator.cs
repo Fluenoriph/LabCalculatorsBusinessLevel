@@ -3,7 +3,8 @@
 using WorkZoneCalculatorData;
 
 
-class WorkZoneCalculator(List<double> values) : BaseDustCalculator(values)
+class WorkZoneCalculator(DustCalcsParameters parameters_object) : BaseDustCalculator(parameters_object)
 {
-    override protected int Current_area_reference_temperature_index { get; } = NumericConstants.CLOSED_SPACE_REFERENCE_TEMPERATURE_INDEX;
+    protected override int Current_area_reference_temperature_index { get; } = NumericConstants.CLOSED_SPACE_REFERENCE_TEMPERATURE_INDEX;
+    protected override double Error_index { get; } = NumericConstants.RESULT_FAULT_INDEX;
 }

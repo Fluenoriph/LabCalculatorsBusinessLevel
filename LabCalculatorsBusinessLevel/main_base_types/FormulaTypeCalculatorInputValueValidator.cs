@@ -1,7 +1,7 @@
 ﻿// Класс, для валидации параметров калькуляторов, где результат рассчитывается по формуле. 
 
-class FormulaTypeCalculatorInputValueValidator(List<string> parameter_names, List<double> parameter_values, List<(int, int)> ranges) 
-    : BaseInputValueValidator<List<string>, List<double>, List<bool>, List<(int, int)>> (parameter_names, parameter_values, ranges)
+class FormulaTypeCalculatorInputValueValidator(List<string> parameter_names, FormulaTypeCalculatorParameters parameters_object, FormulaTypeCalculatorValueRanges ranges_object) 
+    : BaseInputValueValidator<List<string>, List<double>, List<bool>, List<(int, int)>> (parameter_names, parameters_object, ranges_object)
 {
     protected override List<bool> Validate_logic_tracer { get; } = [];
 

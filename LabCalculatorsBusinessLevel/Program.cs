@@ -4,25 +4,29 @@ using LabCalculatorsBusinessLevel.Models;
 
 Console.WriteLine("\n> Калькулятор атмосферный воздух *\n");
 
-// Установка параметров (V, t, P, m_0, m).
+// Параметры атмос. возд.
 
-DustCalcsParameters dust_calc_parameters = new(2000, -25.1, 755, 0.00025, 0.1);
+DustCalcsParameters atmospheric_calc_parameters = new(2000.0, -25.1, 755.0, 0.00025, 0.00098);
 
-// Валидация по диапазонам.
+// Проверка входных параметров.
 
-DustCalcsValueRanges dust_ranges = new();
-
-FormulaTypeCalculatorInputValueValidator dust_values_validator = new(AtmosphericCalculatorData.ParametersTitles.NAMES, 
-                                                                     dust_calc_parameters.Values,
-                                                                     dust_ranges.Ranges);
+FormulaTypeCalculatorInputValueValidator atmospheric_values_validator = new(AtmosphericCalculatorData.ParametersTitles.NAMES,
+                                                                            atmospheric_calc_parameters, 
+                                                                            new DustCalcsValueRanges());
 
 // Работа программы.
 
-if (dust_values_validator.Validation_result)
+if (atmospheric_values_validator.Validation_result)
 {
     Console.WriteLine("\nCalculator is ready !");
 
-    using (LabCalcsContext CalcsDatabase = new())
+    AtmosphericCalculator air_calc = new(atmospheric_calc_parameters);
+    AtmosphericResultProducer air_result = new(air_calc.Result_data);
+
+    Console.WriteLine(air_result.Result_viewer);
+
+
+    /*using (LabCalcsContext CalcsDatabase = new())
     {
         bool db_ready = CalcsDatabase.Database.CanConnect();
 
@@ -43,12 +47,12 @@ if (dust_values_validator.Validation_result)
 
         CalcsDatabase.SaveChanges();
         Console.WriteLine("\nДанные добавлены в базу данных !");
-    };
+    };*/
     
 }
 else
 {
-    Console.WriteLine("\nError ! Check the parameters !");
+    Console.WriteLine("\n Ошибка ! Проверьте входные параметры !");
 }
 
 
@@ -60,39 +64,30 @@ else
 
 
 
+sealed class ProgramMenu
+{
+    static readonly List<string> CalcsTitles = ["пыль в атмосферном воздухе", "пыль в воздухе рабочей зоны", "эффективность вентиляции", "учет влияния фонового шума"];
+        
+    public ProgramMenu()
+    {
+        Console.WriteLine("\n Выберите тип калькулятора.");
+        Console.WriteLine($"\n {ShowCalcTypes()}");
+
+        var calc_value = Console.ReadLine();
 
 
+    }
 
+    static string ShowCalcTypes()
+    {
+        string out_result = string.Empty;
 
+        for (int calc_index = 0; calc_index < CalcsTitles.Count; calc_index++)
+        {
+            out_result += $"({calc_index + 1}) Калькулятор: {CalcsTitles[calc_index]}, ";
+        }
 
+        return out_result;
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*var self_obj_air_calc = new AtmosphericCalculator([2000, 25.1, 755, 0.00025, 0.1]);
-
-var self_obj_air_result = new AtmosphericResult(self_obj_air_calc.Mass_concentration);
-
-Console.WriteLine(self_obj_air_result.Result_viewer);
-
-Console.WriteLine($"\n{new string('=', 60)}");
-
-Console.WriteLine("\n> Калькулятор воздух рабочей зоны *\n");
-
-var self_obj_work_zone_calc = new WorkZoneCalculator([3000, 20, 755, 0.00025, 0.00580]);
-
-var self_obj_work_zone_result = new WorkZoneResult(self_obj_work_zone_calc.Mass_concentration);
-
-Console.WriteLine(self_obj_work_zone_result.Result_viewer);*/
+}

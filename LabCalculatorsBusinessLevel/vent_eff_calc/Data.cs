@@ -11,6 +11,14 @@ readonly struct ParametersTitles
 }
 
 
+struct FormulaConstants
+{
+    public const int SECONDS_IN_HOUR = 3600;
+
+    public const int TO_METER_CONVERT_INDEX = 100;
+}
+
+
 struct MeterUnit
 {
     public const string SQUARE_METER = "м²";
@@ -20,21 +28,30 @@ struct MeterUnit
     public const string METER_PER_SECOND = "м/с";
 
     public const string CENTIMETER = "см";
+
+    public const string CUBE_METER_PER_HOUR = "м³/ч";
+
+    public const string RATE_PER_HOUR = "раз/ч";
 }
 
 
 struct ExtremeValuesOfRange
 {
-    public const int SQUARE_RANGE_LOWER_LIMIT = 0;
-    public const int SQUARE_RANGE_UPPER_LIMIT = 9999;
+    public const int ROOM_SQUARE_RANGE_LOWER_LIMIT = 0;
+    public const int ROOM_SQUARE_RANGE_UPPER_LIMIT = 9999;
 
-    public const int HEIGHT_RANGE_LOWER_LIMIT = 0;
-    public const int HEIGHT_RANGE_UPPER_LIMIT = 15;
+    public const int ROOM_HEIGHT_RANGE_LOWER_LIMIT = 0;
+    public const int ROOM_HEIGHT_RANGE_UPPER_LIMIT = 15;
 
-    public const int AIR_SPEED_RANGE_LOWER_LIMIT = 0;
-    public const int AIR_SPEED_RANGE_UPPER_LIMIT = 20;
+    public const int AIR_MOVING_SPEED_RANGE_LOWER_LIMIT = 0;
+    public const int AIR_MOVING_SPEED_RANGE_UPPER_LIMIT = 20;
 
     public const int HOLE_SIZE_RANGE_LOWER_LIMIT = 1;
     public const int HOLE_SIZE_RANGE_UPPER_LIMIT = 200;
 }
 
+
+struct ResultTitles
+{
+    public static List<string> RESULT_NAME = ["Производительность вентиляции:", "Кратность воздухообмена:"];
+}

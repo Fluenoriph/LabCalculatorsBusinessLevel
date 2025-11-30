@@ -17,11 +17,11 @@ abstract class BaseInputValueValidator<T, L, K, N>
     readonly protected Func<double, int, int, bool> ValidateValueToRange = static (current_value, lower_range_limit, upper_range_limit) => 
         (current_value > lower_range_limit) && (current_value < upper_range_limit);
 
-    public BaseInputValueValidator(T parameter_names, L parameter_values, N ranges)
+    public BaseInputValueValidator(T parameter_names, BaseInputParameters<L> parameters_object, BaseValueRange<N> ranges_object)
     {
         this.parameter_names = parameter_names;
-        this.parameter_values = parameter_values;
-        Value_range = ranges;
+        parameter_values = parameters_object.Values;
+        Value_range = ranges_object.Ranges;
         
         CheckValues();
         GetValidationMainResult();

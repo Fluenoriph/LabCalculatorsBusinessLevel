@@ -1,35 +1,23 @@
 ﻿// * Файл "BaseDustCalculator.cs": базовый класс, для калькуляторов рассчета взвешенных веществ в воздухе. *
 
-using BaseDustCalcsData;
+using DustCalcsData;
 
 
-abstract class BaseDustCalculator : BaseCalculator<List<double>>
+abstract class BaseDustCalculator : FormulaTypeCalculator
 {
-    /* Значение нормальной температуры среды, в которой проводился отбор проб.
-       Атмосферный воздух или воздух закрытых помещений. */
+    // Значение нормальной температуры среды, в которой проводился отбор проб.
+    // Атмосферный воздух или воздух закрытых помещений.
 
     abstract protected int Current_area_reference_temperature_index { get; }
 
     // Коэффициент погрешности.
 
     abstract protected double Error_index { get; }
+    
+    // Параметры: (0)-объем, (1)-температура, (2)-давление, (3)-масса чистого фильтра, (4)-масса фильтра с пылью.
 
-    // Параметры калькулятора.
-
-    readonly double volume, temperature, pressure, filter_weight_1, filter_weight_2;
-
-    public override List<double> Result_data { get; } = [];
-
-    // Вход: список значений параметров.
-
-    public BaseDustCalculator(List<double> values)
+    public BaseDustCalculator(DustCalcsParameters parameters_object) : base(parameters_object)
     {
-        volume = values[0];
-        temperature = values[1];
-        pressure = values[2];
-        filter_weight_1 = values[3];
-        filter_weight_2 = values[4];
-
         var mass_concentration = CalcMassConcentration();
 
         Result_data.Add(mass_concentration);
@@ -47,7 +35,7 @@ abstract class BaseDustCalculator : BaseCalculator<List<double>>
 
     double CalcMassConcentration()
     {
-        var concentration = ( (filter_weight_2 * FormulaConstants.C_SYSTEM_STEP_RATE) - (filter_weight_1 * FormulaConstants.C_SYSTEM_STEP_RATE) ) * FormulaConstants.C_SYSTEM_STEP_RATE /
+        var concentration = ( (Parameter_values[4] * FormulaConstants.C_SYSTEM_STEP_RATE) - (Parameter_values[3] * FormulaConstants.C_SYSTEM_STEP_RATE) ) * FormulaConstants.C_SYSTEM_STEP_RATE /
                                GetNormalVolume();
 
         return Math.Round(concentration, FractionalDigits.DUST_CALCS);
@@ -68,8 +56,8 @@ abstract class BaseDustCalculator : BaseCalculator<List<double>>
 
     double GetNormalVolume()
     {
-        var normal_volume = (volume * Current_area_reference_temperature_index * pressure) /
-                            ( (FormulaConstants.ATMOS_REFERENCE_TEMPERATURE_INDEX + temperature) * FormulaConstants.REFERENCE_PRESSURE_INDEX);
+        var normal_volume = (Parameter_values[0] * Current_area_reference_temperature_index * Parameter_values[2]) /
+                            ( (FormulaConstants.ATMOS_REFERENCE_TEMPERATURE_INDEX + Parameter_values[1]) * FormulaConstants.REFERENCE_PRESSURE_INDEX);
 
         return Math.Round(normal_volume);
     }

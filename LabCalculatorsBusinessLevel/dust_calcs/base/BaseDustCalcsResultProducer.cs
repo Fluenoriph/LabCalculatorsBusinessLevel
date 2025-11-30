@@ -1,9 +1,9 @@
 ﻿// * Файл "BaseDustCalcsResultProducer.cs": базовый класс для представления результата вычислений калькуляторов по пыли в воздухе. *
 
-using BaseDustCalcsData;
+using DustCalcsData;
 
 
-abstract class BaseDustCalcsResultProducer : IResultProducer
+abstract class BaseDustCalcsResultProducer : BaseResultProducer<string>
 {
     // Нижний предел диапазона методики.
 
@@ -11,33 +11,27 @@ abstract class BaseDustCalcsResultProducer : IResultProducer
 
     // Верхний предел диапазона методики.
 
-    abstract protected int Upper_limit_range { get; }   
-
-    // Интерпретация результата.
-
-    abstract protected string Result_report { get; }
-
-    public string? Result_viewer { get; }
-
-    public BaseDustCalcsResultProducer(double mass_concentrate, double result_error)
+    abstract protected int Upper_limit_range { get; }       
+                
+    public BaseDustCalcsResultProducer(List<double> result_data)
     {
         // Концентрация в диапазоне измерения методики.
 
-        if (Lower_limit_range < mass_concentrate && mass_concentrate < Upper_limit_range)
+        if (Lower_limit_range < result_data[0] && result_data[0] < Upper_limit_range)
         {
-            Result_viewer = $"{Result_report} {RussianLocaleConverter.Convert(mass_concentrate)} ± {result_error} {MeterUnit.MG_M_CUBE}";
+            Result_viewer = $"{Result_report} {RussianLocaleConverter.Convert(result_data[0])} ± {result_data[1]} {MeterUnit.MG_ON_CUBE_METER}";
         }
 
         // Концентрация вне диапазонов.
 
-        if (mass_concentrate < Lower_limit_range)
+        if (result_data[0] < Lower_limit_range)
         {
-            Result_viewer = $"{Result_report} менее {RussianLocaleConverter.Convert(Lower_limit_range)} {MeterUnit.MG_M_CUBE}";
+            Result_viewer = $"{Result_report} менее {RussianLocaleConverter.Convert(Lower_limit_range)} {MeterUnit.MG_ON_CUBE_METER}";
         }
 
-        if (mass_concentrate > Upper_limit_range)
+        if (result_data[0] > Upper_limit_range)
         {
-            Result_viewer = $"{Result_report} более {RussianLocaleConverter.Convert(Upper_limit_range)} {MeterUnit.MG_M_CUBE}";
+            Result_viewer = $"{Result_report} более {RussianLocaleConverter.Convert(Upper_limit_range)} {MeterUnit.MG_ON_CUBE_METER}";
         }
     }  
 }
