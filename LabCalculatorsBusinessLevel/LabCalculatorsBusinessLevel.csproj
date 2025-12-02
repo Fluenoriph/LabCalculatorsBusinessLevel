@@ -58,7 +58,6 @@
 
   <ItemGroup>
     <Folder Include="data_access_layer\" />
-    <Folder Include="noise_calc\" />
   </ItemGroup>
 
   <ItemGroup>

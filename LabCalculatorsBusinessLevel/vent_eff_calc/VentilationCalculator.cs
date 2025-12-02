@@ -11,8 +11,8 @@ sealed class VentilationCalculator : FormulaTypeCalculator
 
         double ventilation_rate = ventilation_perfomance / (Parameter_values[0] * Parameter_values[1]);
 
-        Result_data.Add(ventilation_perfomance);
-        Result_data.Add(ventilation_rate);
+        Result_data.Add(Math.Round(ventilation_perfomance, FractionalDigits.VENTILATION_CALC));
+        Result_data.Add(Math.Round(ventilation_rate, FractionalDigits.VENTILATION_CALC));
     }
 
     double SelectAndCalculateHoleSquare(BaseVentilationCalculatorParameters parameters_object)

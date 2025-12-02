@@ -3,11 +3,22 @@
 namespace VentilationCalculatorData;
 
 
-readonly struct ParametersTitles
+static class ParametersTitles
 {
-    public static readonly List<string> NAMES = ["Площадь помещения", "Высота помещения",
-                                                 "Скорость движения воздуха в вент. отверстии",
-                                                 "Диаметр вент. отверстия", "Ширина вент. отверстия", "Высота вент. отверстия"];
+    static readonly List<string> MAIN_NAMES = ["Площадь помещения", "Высота помещения", "Скорость движения воздуха в вент. отверстии"];
+        
+    public static readonly List<string> CIRCLE_HOLE_NAMES;
+    public static readonly List<string> RECTANGLE_HOLE_NAMES;
+
+    static ParametersTitles()
+    {
+        CIRCLE_HOLE_NAMES = MAIN_NAMES; 
+        CIRCLE_HOLE_NAMES.Add("Диаметр вент. отверстия");
+
+        RECTANGLE_HOLE_NAMES = MAIN_NAMES;
+        RECTANGLE_HOLE_NAMES.Add("Ширина вент. отверстия");
+        RECTANGLE_HOLE_NAMES.Add("Высота вент. отверстия");
+    }
 }
 
 
