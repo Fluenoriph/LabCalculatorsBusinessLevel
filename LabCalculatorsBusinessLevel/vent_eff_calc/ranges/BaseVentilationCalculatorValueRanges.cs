@@ -3,7 +3,7 @@
 using VentilationCalculatorData;
 
 
-abstract class BaseVentilationCalculatorValueRanges : FormulaTypeCalculatorValueRanges
+abstract class BaseVentilationCalculatorValueRanges : BaseValueRanges
 {
     public BaseVentilationCalculatorValueRanges()
     {

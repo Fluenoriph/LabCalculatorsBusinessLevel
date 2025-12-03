@@ -3,7 +3,7 @@
 using DustCalcsData;
 
 
-sealed class DustCalcsValueRanges : FormulaTypeCalculatorValueRanges
+sealed class DustCalcsValueRanges : BaseValueRanges
 {
     public DustCalcsValueRanges()
     {
