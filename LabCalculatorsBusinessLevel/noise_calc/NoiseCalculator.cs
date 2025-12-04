@@ -2,17 +2,17 @@
 
 using NoiseCaclculatorData;
 
+
 sealed class NoiseCalculator : BaseCalculator<List<List<double>>>
 {
-    protected override List<List<double>> Parameter_values { get; set; } = [];
-    public override List<List<double>> Result_data { get; } = [];
+    public override List<List<double>> Result_data { get; } = new(2);
 
     public NoiseCalculator(NoiseCalculatorParameters parameters_object) : base(parameters_object)
     {
         for (int octave_band_index = 0; octave_band_index < OctaveBands.COUNT; octave_band_index++)
         {
-            var result = ComputingWithBackgroundLevel(Parameter_values[NoiseLevelTypeIndex.SOURCE][octave_band_index], 
-                                                      Parameter_values[NoiseLevelTypeIndex.BACKGROUND][octave_band_index]);
+            var result = ComputingWithBackgroundLevel(parameter_values[NoiseLevelTypeIndex.SOURCE][octave_band_index], 
+                                                      parameter_values[NoiseLevelTypeIndex.BACKGROUND][octave_band_index]);
 
             Result_data[NoiseLevelTypeIndex.DELTA].Add(result.Item1);
             Result_data[NoiseLevelTypeIndex.FIXED].Add(result.Item2);

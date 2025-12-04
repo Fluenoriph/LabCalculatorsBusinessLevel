@@ -35,7 +35,7 @@ abstract class BaseDustCalculator : FormulaTypeCalculator
 
     double CalcMassConcentration()
     {
-        var concentration = ( (Parameter_values[4] * FormulaConstants.C_SYSTEM_STEP_RATE) - (Parameter_values[3] * FormulaConstants.C_SYSTEM_STEP_RATE) ) * FormulaConstants.C_SYSTEM_STEP_RATE /
+        var concentration = ( (parameter_values[4] * FormulaConstants.C_SYSTEM_STEP_RATE) - (parameter_values[3] * FormulaConstants.C_SYSTEM_STEP_RATE) ) * FormulaConstants.C_SYSTEM_STEP_RATE /
                                GetNormalVolume();
 
         return Math.Round(concentration, FractionalDigits.DUST_CALCS);
@@ -56,8 +56,8 @@ abstract class BaseDustCalculator : FormulaTypeCalculator
 
     double GetNormalVolume()
     {
-        var normal_volume = (Parameter_values[0] * Current_area_reference_temperature_index * Parameter_values[2]) /
-                            ( (FormulaConstants.ATMOS_REFERENCE_TEMPERATURE_INDEX + Parameter_values[1]) * FormulaConstants.REFERENCE_PRESSURE_INDEX);
+        var normal_volume = (parameter_values[0] * Current_area_reference_temperature_index * parameter_values[2]) /
+                            ( (FormulaConstants.ATMOS_REFERENCE_TEMPERATURE_INDEX + parameter_values[1]) * FormulaConstants.REFERENCE_PRESSURE_INDEX);
 
         return Math.Round(normal_volume);
     }

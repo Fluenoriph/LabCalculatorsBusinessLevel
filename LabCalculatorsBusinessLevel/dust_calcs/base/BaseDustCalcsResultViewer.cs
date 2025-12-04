@@ -3,7 +3,7 @@
 using DustCalcsData;
 
 
-abstract class BaseDustCalcsResultViewer : BaseResultViewer<string>
+abstract class BaseDustCalcsResultViewer : BaseResultViewer<List<double>, string>
 {
     // Нижний предел диапазона методики.
 
@@ -13,7 +13,7 @@ abstract class BaseDustCalcsResultViewer : BaseResultViewer<string>
 
     abstract protected int Upper_limit_range { get; }       
                 
-    public BaseDustCalcsResultViewer(List<double> result_data)
+    public BaseDustCalcsResultViewer(List<double> results) : base(results)
     {
         // Концентрация в диапазоне измерения методики.
 
