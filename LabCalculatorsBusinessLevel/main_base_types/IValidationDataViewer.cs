@@ -1,6 +1,6 @@
 ﻿//
 
-interface IValidatedValuesViewer
+interface IValidationDataViewer
 {
     static void ViewResult(List<string> parameter_names, List<double> parameter_values, List<bool> validate_logic_tracer)
     {

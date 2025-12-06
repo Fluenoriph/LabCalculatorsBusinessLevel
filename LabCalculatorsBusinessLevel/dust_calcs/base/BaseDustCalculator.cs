@@ -38,7 +38,7 @@ abstract class BaseDustCalculator : FormulaTypeCalculator
         var concentration = ( (parameter_values[4] * FormulaConstants.C_SYSTEM_STEP_RATE) - (parameter_values[3] * FormulaConstants.C_SYSTEM_STEP_RATE) ) * FormulaConstants.C_SYSTEM_STEP_RATE /
                                GetNormalVolume();
 
-        return Math.Round(concentration, FractionalDigits.DUST_CALCS);
+        return Math.Round(concentration, FractionalDigits.TWO);
     }
 
     /* * Приведение объема отобранной пробы к нормальным условиям. *

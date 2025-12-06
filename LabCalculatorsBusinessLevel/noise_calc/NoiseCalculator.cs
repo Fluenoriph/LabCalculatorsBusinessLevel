@@ -5,7 +5,7 @@ using NoiseCaclculatorData;
 
 sealed class NoiseCalculator : BaseCalculator<List<List<double>>>
 {
-    public override List<List<double>> Result_data { get; } = new(2);
+    public override List<List<double>> Result_data { get; } = [[], []];
 
     public NoiseCalculator(NoiseCalculatorParameters parameters_object) : base(parameters_object)
     {
@@ -14,8 +14,8 @@ sealed class NoiseCalculator : BaseCalculator<List<List<double>>>
             var result = ComputingWithBackgroundLevel(parameter_values[NoiseLevelTypeIndex.SOURCE][octave_band_index], 
                                                       parameter_values[NoiseLevelTypeIndex.BACKGROUND][octave_band_index]);
 
-            Result_data[NoiseLevelTypeIndex.DELTA].Add(result.Item1);
-            Result_data[NoiseLevelTypeIndex.FIXED].Add(result.Item2);
+            Result_data[NoiseLevelTypeIndex.DELTA].Add(Math.Round(result.Item1, FractionalDigits.ONE));
+            Result_data[NoiseLevelTypeIndex.FIXED].Add(Math.Round(result.Item2, FractionalDigits.ONE));
         }
     }
 

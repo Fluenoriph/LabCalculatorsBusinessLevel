@@ -5,7 +5,7 @@ using NoiseCaclculatorData;
 
 sealed class NoiseCalculatorInputValueValidator : BaseInputValueValidator<List<List<double>>, List<List<bool>>>
 {
-    public override List<List<bool>> Validate_logic_tracer { get; } = new(2);
+    public override List<List<bool>> Validate_logic_tracer { get; } = [[], []];
 
     public NoiseCalculatorInputValueValidator(NoiseCalculatorParameters parameters_object, NoiseCalculatorValueRange ranges_object) 
          : base(parameters_object, ranges_object)

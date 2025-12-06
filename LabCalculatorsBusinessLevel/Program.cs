@@ -8,32 +8,49 @@ using VentilationCalculatorData;   // одинаковые имена струк
 
 // Параметры
 
-CircleHoleParameters vent_parameters_circle_hole_type = new(45.4, 2.9, 4.6, 15);
+NoiseCalculatorParameters noise_param = new(41.5, 54.2, 45.6, 40.2, 43.3, 40.0, 41.2, 47.5, 48.7, 52.3,
+                                            32.9, 30.2, 41.5, 39.7, 36.4, 40.1, 37.5, 32.5, 36.9, 45.1);
+
+
+
+//CircleHoleParameters vent_parameters_circle_hole_type = new(45.4, 2.9, 4.6, 15);
 
 //DustCalcsParameters atmospheric_calc_parameters = new(2000.0, -25.1, 755.0, 0.00025, 0.00098);
 
 // Проверка входных параметров.
 
-FormulaTypeCalculatorInputValueValidator vent_values_validator = new(vent_parameters_circle_hole_type, new CircleHoleValueRanges());
+NoiseCalculatorInputValueValidator noise_validator = new(noise_param, new NoiseCalculatorValueRange());
+
+NoiseCalculatorValidationDataViewer validate_view = new(noise_param, noise_validator.Validate_logic_tracer);
+
+//FormulaTypeCalculatorInputValueValidator vent_values_validator = new(vent_parameters_circle_hole_type, new CircleHoleValueRanges());
 
 
 //FormulaTypeCalculatorInputValueValidator atmospheric_values_validator = new(AtmosphericCalculatorData.ParametersTitles.MAIN_NAMES,
 //                                                                          atmospheric_calc_parameters, 
 //                                                                        new DustCalcsValueRanges());
 
-IValidatedValuesViewer.ViewResult(ParametersTitles.CIRCLE_HOLE_NAMES, vent_parameters_circle_hole_type.Values, vent_values_validator.Validate_logic_tracer);
+//IValidationDataViewer.ViewResult(ParametersTitles.CIRCLE_HOLE_NAMES, vent_parameters_circle_hole_type.Values, vent_values_validator.Validate_logic_tracer);
 
 
 // Работа программы.
 
-if (vent_values_validator.Validation_result)
+if (noise_validator.Validation_result)
 {
     Console.WriteLine("\nCalculator is ready !");
 
-    VentilationCalculator vent_calc = new(vent_parameters_circle_hole_type);
-    VentilationCalculatorResultViewer vent_result = new(vent_calc.Result_data);
+    NoiseCalculator noise_calc = new(noise_param);
 
-    Console.WriteLine(vent_result.Produced_result);
+
+
+    NoiseCalculatorResultViewer result_viewer = new(noise_param, noise_calc.Result_data);
+
+    Console.WriteLine(result_viewer.Produced_result);
+
+    //VentilationCalculator vent_calc = new(vent_parameters_circle_hole_type);
+    //VentilationCalculatorResultViewer vent_result = new(vent_calc.Result_data);
+
+    //Console.WriteLine(vent_result.Produced_result);
 
 
 

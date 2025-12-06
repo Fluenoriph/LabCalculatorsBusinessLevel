@@ -42,3 +42,9 @@ struct ExtremeValuesOfRange
     public const int CORRECTED_SOUND_LEVEL_RANGE_LOWER_LIMIT = 21;
     public const int CORRECTED_SOUND_LEVEL_RANGE_UPPER_LIMIT = 140;
 }
+
+
+struct BandDataOuttingOffset
+{
+    public const int VALUE = -10;
+}
