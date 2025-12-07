@@ -12,8 +12,9 @@ struct OctaveBands
 
 struct ResultTitles
 {
+    public const string METER_UNIT_NAMES = "dB \\ Hz";
     public static List<string> SOURCE_DATA_NAMES = ["Общий уровень", "Фоновый уровень"];
-    public static List<string> COMPUTED_DATA_NAMES = ["Разность с фоном", "С поправкой на фон"];
+    public static List<string> COMPUTED_RESULT_DATA_NAMES = ["Разность с фоном", "С поправкой на фон"];
 }
 
 
@@ -44,7 +45,8 @@ struct ExtremeValuesOfRange
 }
 
 
-struct BandDataOuttingOffset
+struct DataOuttingOffset
 {
-    public const int VALUE = -10;
+    public const int BAND_VALUE = -8;
+    public const int TABLE_INFO_VALUE = -20;
 }

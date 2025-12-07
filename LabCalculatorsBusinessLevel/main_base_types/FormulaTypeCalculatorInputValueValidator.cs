@@ -15,7 +15,7 @@ sealed class FormulaTypeCalculatorInputValueValidator : BaseInputValueValidator<
     {
         for (int parameter_index = 0; parameter_index < parameter_values.Count; parameter_index++ )
         {
-            Validate_logic_tracer.Add(ValidateValueToRange(parameter_values[parameter_index], Value_range[parameter_index].Item1, Value_range[parameter_index].Item2));   
+            Validate_logic_tracer.Add(ValidateValueToRange(parameter_values[parameter_index], value_range[parameter_index].Item1, value_range[parameter_index].Item2));   
         }
     }
 }

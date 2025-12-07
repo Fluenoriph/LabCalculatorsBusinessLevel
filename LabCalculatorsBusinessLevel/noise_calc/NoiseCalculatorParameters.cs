@@ -1,6 +1,6 @@
-﻿//
+﻿// * Файл "NoiseCalculatorParameters.cs": базовый класс для параметров калькулятора по шуму. * 
 
-sealed class NoiseCalculatorParameters : BaseInputParameters<List<List<double>>> 
+sealed class NoiseCalculatorParameters : BaseInputParameters<List<double>>
 {
     public override List<List<double>> Values { get; } = [[], []];
 

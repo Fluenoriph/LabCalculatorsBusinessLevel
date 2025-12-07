@@ -1,6 +1,6 @@
-﻿// Параметры калькулятора.
+﻿// * Файл "BaseInputParameters.cs": базовый класс входных параметров калькулятора. *
 
-abstract class BaseInputParameters<T>
+abstract class BaseInputParameters<TDataType>
 {
-    public abstract T Values { get; }
+    public abstract List<TDataType> Values { get; }
 }
