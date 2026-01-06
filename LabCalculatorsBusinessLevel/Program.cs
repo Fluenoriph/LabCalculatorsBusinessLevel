@@ -1,7 +1,8 @@
-﻿using LabCalculatorsBusinessLevel.CalcDBContext;
-using LabCalculatorsBusinessLevel.Models;
+﻿using VentilationCalculatorData;   // одинаковые имена структур. Нужны отдельные классы сессий калькуляторов.
 
-using VentilationCalculatorData;   // одинаковые имена структур. Нужны отдельные классы сессий калькуляторов.
+
+
+
 
 
 //Console.WriteLine("\n> Калькулятор атмосферный воздух *\n");
@@ -74,6 +75,11 @@ if (noise_validator.Validation_result)
         if (db_ready) Console.WriteLine("Base is OK !");
         else Console.WriteLine("Base is BAD !");
 
+
+
+
+
+
         AirParameters air_parameters = new()
         {
             Volume = (float)dust_calc_parameters.Values[0],
@@ -89,6 +95,14 @@ if (noise_validator.Validation_result)
         CalcsDatabase.SaveChanges();
         Console.WriteLine("\nДанные добавлены в базу данных !");
     };*/
+
+
+
+
+
+
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////
 }
 else
