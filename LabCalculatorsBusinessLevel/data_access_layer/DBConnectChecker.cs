@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
 
-sealed class DBConnectChecker
+sealed class DBConnectChecker // ???? not needed
 {
     public static bool CheckAvailability(DbContext current_db_context)
     {

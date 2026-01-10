@@ -1,0 +1,4 @@
+﻿interface ICreateOperation
+{
+    Task CreateDataSet();
+}

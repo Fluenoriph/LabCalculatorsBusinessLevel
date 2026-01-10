@@ -1,11 +1,8 @@
-﻿using LabCalculatorsBusinessLevel.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-namespace LabCalculatorsBusinessLevel.Calc_Data_Context;
 
-
-public partial class LabCalcsContext : DbContext
+partial class LabCalcsContext : DbContext
 {
     public LabCalcsContext() { }
 

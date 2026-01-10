@@ -1,7 +1,6 @@
-﻿namespace LabCalculatorsBusinessLevel.Models;
+﻿
 
-
-public partial class RegistrationTime
+partial class RegistrationTime
 {
     public int RegTimeId { get; set; }
 

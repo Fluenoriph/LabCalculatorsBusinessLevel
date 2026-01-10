@@ -1,7 +1,6 @@
-﻿namespace LabCalculatorsBusinessLevel.Models;
+﻿
 
-
-public partial class NoiseCalculatorData
+partial class NoiseCalculatorData
 {
     public int DataId { get; set; }
 

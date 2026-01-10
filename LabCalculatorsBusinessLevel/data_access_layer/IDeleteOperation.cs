@@ -1,0 +1,4 @@
+﻿interface IDeleteOperation
+{
+    void DeleteDataSet();
+}

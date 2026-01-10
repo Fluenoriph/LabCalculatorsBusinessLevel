@@ -1,0 +1,4 @@
+﻿interface IUpdateOperation
+{
+    void UpdateDataSet();
+}

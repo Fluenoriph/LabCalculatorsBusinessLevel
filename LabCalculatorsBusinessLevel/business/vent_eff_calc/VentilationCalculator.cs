@@ -36,7 +36,7 @@ sealed class VentilationCalculator : FormulaTypeCalculator
 
         else
         {
-            return (parameter_values[4] / FormulaConstants.TO_METER_CONVERT_INDEX) * (parameter_values[5] / FormulaConstants.TO_METER_CONVERT_INDEX);
+            return (parameter_values[3] / FormulaConstants.TO_METER_CONVERT_INDEX) * (parameter_values[4] / FormulaConstants.TO_METER_CONVERT_INDEX);
         }
     }
 }

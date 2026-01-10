@@ -1,7 +1,6 @@
-﻿namespace LabCalculatorsBusinessLevel.Models;
+﻿
 
-
-public partial class CalculatorType
+partial class CalculatorType
 {
     public int CalcTypeId { get; set; }
 
